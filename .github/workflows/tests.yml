@@ -18,7 +18,15 @@ jobs:
       with:
         python-version: '3.12'  
 
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        . venv/bin/activate
+        pip install -r requirements.txt
+
     # Run tests
     - name: Run pytest
       run: |
+        . venv/bin/activate
         pytest test_app.py
